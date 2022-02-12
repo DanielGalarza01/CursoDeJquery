@@ -2,70 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-   
     <title>Curso de jquery</title>
 </head>
 <body>
-    <h1>JSON.parse</h1>
-    <style>
-        .cubo{
-            position: absolute;
-            background-color: black;
-            width: 50px;
-            height: 50px;   
-        }
-    </style>
-     <center>
-        <button id="left" class="fa fa-backward"></button>
-        <button id="right" class="fa fa-forward "></button>
-        <button id="up" class="fa fa-caret-up"></button>
-        <button id="down" class="fa fa-caret-down"></button>
-    </center>
-    <div class="cubo"></div>
-   
+    <h1 class="saludo">CURSO DE JQUERY</h1>
+    <p id="parrafo">Titulo1</p>
+    <div>:3 :)</div>
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="https://use.fontawesome.com/e622d3b53e.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script>
-        $(function(){
-         /*    $('body').keyup(function(event){
-                if(event.keyCode==37){
-                    $('.cubo').animate({'left':'-=50px'});
-                    console.log("left"); 
-                }else if(event.keyCode==39){
-                    $('.cubo').animate({'left':'+=50px'});
-                    console.log("right");
-                }else if(event.keyCode==38){
-                    $('.cubo').animate({'top':'-=50px'});
-                    console.log("up");
-                }else if(event.keyCode==40){
-                    $('.cubo').animate({'top':'+=50px'});
-                    console.log("down");
-                }else
-                console.log("Utilice las teclas direccionales");
-            }); */
+/*****************************************************************
+ * FORMAS DE SABER SI EL DOCUMENTO ESTA CARGANDO BIEN */
+      /* $(document).ready(function(){
+            alert("Ya funciona, primera forma");
+        }); */
+      /*   $(function(){
+            alert("Segunda forma");
+        }); */
+      /*   $().ready(function(){
+            alert("Tercera forma");
+        }); */
+     /*    $('h1').ready(function(){
+            alert("cuarta forma");
+        }); */
 
-       /*      $('#left').click(function(){
-                $('.cubo').animate({'left':'-=50px'});
-                console.log("left");
-            });
-            $('#right').click(function(){
-                $('.cubo').animate({'left':'+=50px'});
-                console.log("right");
-            });
-            $('#up').click(function(){
-                $('.cubo').animate({'top':'-=50px'});
-                console.log("up");
-            });
-            $('#down').click(function(){
-                $('.cubo').animate({'top':'+=50px'});
-                console.log("down");
-            }); */
-            var cad = '{"name":"Daniel","lastname":"Galarza","edad":47}';
-            var obj = JSON.parse(cad);
-            console.log(obj.name+" "+obj.lastname);
-            console.log(obj.edad);   
-        });
+/********************************************************************
+ 
+CAMBIAR EL TEXTO.
+*se coloca # para llamar a un id, siempre el llamado entre comillas simples*/
+//$('#parrafo').text("Titulo2"); 
+
+/*******************************************************************
+
+ASIGNAR PROPIEDADES CSS. SE PUEDE AGREGAR, MODIFICAR O REMOVER.
+*se coloca . para llamar a una class, siempre el llamado entre comillas simples*/
+//$('.saludo').css({'background-color':'green'});
+
+/*********************************************************************
+
+MODIFICAR ELEMENTOS O ETIQUETAS DEL HTML.   
+*se llama a la etiqueta entre comillas simples. Si hubiera más de una etiqueta iguales, modifica a todas.*/
+//$('div').text("Jejejejej!!!!!");
+
+/**************************************************************
+METODO WHEN / THEN / CATCH.*/
+
+$.when( $.ready, $getScript("js/index.js") ).then(function(){
+    alert("ok");
+}).catch(function(){
+    alert("no ok");
+});
+
     </script>
 </body>
 </html>

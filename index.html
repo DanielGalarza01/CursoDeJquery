@@ -5,10 +5,16 @@
     <title>Curso de jquery</title>
 </head>
 <body>
+    <style type="text/css">             /*Se creo este estilo para mostar como funciona show and hide*/
+        .ocultar{            
+            display: none;   
+        }
+    </style>
     <h1 class="saludo">CURSO DE JQUERY</h1>
-    <p id="parrafo">Titulo1</p>
+    <p id="parrafo" class="saludo ocultar">Titulo1</p>
     <div>:3 :)</div>
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/index.js"></script>
     <script>
 /*****************************************************************
  * FORMAS DE SABER SI EL DOCUMENTO ESTA CARGANDO BIEN */
@@ -46,10 +52,74 @@ MODIFICAR ELEMENTOS O ETIQUETAS DEL HTML.
 /**************************************************************
 METODO WHEN / THEN / CATCH.*/
 
-$.when( $.ready, $getScript("js/index.js") ).then(function(){
-    alert("ok");
+/* $.when( $.ready, $getScript("js/index.js")).then(function(){
+    console.log("Pasó");
 }).catch(function(){
-    alert("no ok");
+    console.log("no ok");
+}); */
+
+/***************************************************************
+ GUETTERS AND SETTERS. 
+ GUETTERS NOS PERMITE OBTENER EL VALOR DE ALGÚN ELEMENTO.
+ SETTERS NOS PERMITE ASIGNARLE UN VALOR A ALGÚN ELEMENTO. 
+ METODO attr NOS PERMITE OBTENER Y ASIGNAR UN VALOR*/
+
+/* var a = $('.saludo').html();     //EJEMPLO 1 html
+alert(a); */   
+
+/* var a = $('h1').attr('class');     //EJEMPLO 2 método attr . En este ejemplo obtiene la clase.
+alert(a); */
+
+/* var a = $('h1').attr('id','hola');     //EJEMPLO 3. H1 no tenía id. Se modificó con el método attr. Se puede ver por consola.
+alert(a); */
+
+/********************************************************************
+ 
+MÉTODO CSS.  Va dentro de una función. Se puede trabajar como un objeto. Modificar varias propiedades del mismo.*/ 
+
+        /* $(function(){
+            $('.saludo').css({'background-color':'green','text-align':'center'});  // Si hay varios elementos de la misma clase, etiqueta o id. Modifica todos.
+        }); */
+
+/********************************************************************
+ 
+MANEJO DE CLASES css. hasClass, addClass, removeClass.*/
+
+/* $(function(){
+    $('#parrafo').css({'background-color':'green','text-align':'center'});
+    if($('#parrafo').hasClass('saludo')){
+        alert("Si tiene clase saludo");
+        $('#parrafo').removeClass('saludo');
+    }
+    else{                                          //para probar esto le saqué la clase saludo al parrafo.
+        alert("No tiene la clase saludo");
+        $('#parrafo').addClass('saludo');
+    } 
+}); */
+
+/****************************************************************************
+
+SHOW and HIDE.  SHOW nos permite mostrar un elemento en pantalla. HIDE nos permite ocultalo.*/
+
+$(function(){
+    $('#parrafo').css({'background-color':'green','text-align':'center'});
+    if($('#parrafo').hasClass('saludo')){
+        alert("Si tiene clase saludo");
+        $('#parrafo').show(3000);                      //El id parrafo tiene la clase ocultar, al darle el método show, lo muestra por pantalla. 
+    }                                              // Tambien se le puede agregar parametros, en este caso tres segundos para que se note como se muestra.
+    else{                                          
+        alert("p no tiene la clase saludo");
+        $('#parrafo').addClass('saludo');
+    } 
+
+
+    if($('div').hasClass('saludo')){
+        alert("div tiene la clase saludo");
+    }
+    else{
+        alert("div no tiene la clase saludo");
+        $('div').hide(3000);
+    }
 });
 
     </script>

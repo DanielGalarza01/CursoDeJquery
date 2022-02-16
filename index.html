@@ -5,6 +5,11 @@
     <title>Curso de jquery</title>
 </head>
 <body>
+    <center>
+
+    <h1><i class="fa fa-volume-up" id="icon" ></i></h1>
+    <h1 class="saludo">CURSO DE JQUERY</h1>
+    <div>primera página</div><br><br>
     <button id="btn1" >mostrar</button>
     <button id="btn2" >ocultar</button><br><br>
     <style type="text/css">             /*Se creo este estilo para mostar como funciona show and hide*/
@@ -12,13 +17,34 @@
             display: none;   
         }
     </style>
-    <img id="coco" src="img/coco.jpg" alt=""><br>
+    <img id="coco" src="img/coco.jpg" alt=""><br><br>
     <input type="text" id="input" >
     <label for="">Número de presiones <span>0</span></label>
-    <h1 class="saludo">CURSO DE JQUERY</h1>
     <p id="parrafo" class="saludo ocultar">Titulo1</p>
-    <div>:3 :)</div>
+    
+    <ul id="colors" >
+        <li>orange</li>
+        <li>purple</li>
+        <li>green</li>
+    </ul>
+    <style>
+        .cubo{
+            position: absolute;
+            background-color: black;
+            width: 50px;
+            height: 50px;
+            margin-top: 5%;
+            margin-left: 48%;
+        }
+    </style>
+    <button id="left" class="fa fa-backward" ></button>
+    <button id="right" class="fa fa-forward" ></button>
+    <button id="up" class="fa fa-caret-up" ></button>
+    <button id="down" class="fa fa-caret-down"></button>
+    <div class="cubo"></div>
+    </center>
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="https://use.fontawesome.com/e622d3b53e.js" ></SCript>
     <script src="js/index.js"></script>
     <script>
 /****************************************************************
@@ -255,14 +281,14 @@ EFECTOS. .show  .hide
     });
 }); */
 
-/* $(function(){
+$(function(){
     $('#btn1').click(function(){
         $('#coco').fadeIn(3000);
     });
     $('#btn2').click(function(){
         $('#coco').fadeOut(3000);   //Se  puede agregar un tiempo de ejecución.
     });
-}); */
+});
 
 /* $(function(){
     $('#btn1').click(function(){
@@ -275,7 +301,10 @@ EFECTOS. .show  .hide
 
 /*************************************************************************************** 
 EVENTOS DEL  TECLADO.
-keyDown (ejecuta una función cuando presionamos cualquier tecla)   */ 
+* keydown (ejecuta una función cuando presionamos cualquier tecla).
+* keyup (ejecuta una función cuando soltamos cualquier tecla).
+* keypress (ejecuta una función sólo si la tecla se presiona y se suelta 
+  con el puntero del mouse sobre el objeto)   */ 
 
 $(function(){
     $('#input').keydown(function(){
@@ -290,6 +319,82 @@ $(function(){
     $('#input').keyup(function(){
         $('#input').css({"background-color":"white"});
     });
+});
+
+/***************************************************************************************** 
+EVENTOS DEL MOUSE.
+.mousedown() (ejecuta una función cuando presionamos sobre el objeto cualquier botón del mouse).
+.mouseup()  (ejecuta una función cuando soltamos sobre el objeto cualquier botón del mouse).
+.mouseover()  (ejecuta una función cuando pasamos sobre el objeto con el cursor del mouse).
+.mouseleave()  (ejecuta una función cuando el cursor del mouse sale del objeto). */
+
+    /* $('#icon').mousedown(function(){
+        $('#icon').addClass('fa-volume-off').removeClass('fa-volume-up');
+    });
+
+    $('#icon').mouseup(function(){
+        $('#icon').addClass('fa-volume-up').removeClass('fa-volume-off');
+    }); */
+
+   /*  $('#icon').mouseover(function(){
+        $('#icon').addClass('fa-volume-off').removeClass('fa-volume-up');
+    });
+
+    $('#icon').mouseleave(function(){
+        $('#icon').addClass('fa-volume-up').removeClass('fa-volume-off');
+    }); */
+
+    /***************************************************************************************
+    MÉTODO DATA */ 
+       
+    /* $('#icon').mousedown(function(){
+        $('#icon').data('status', 'cambiando');
+        $('#icon').addClass('fa-volume-off').removeClass('fa-volume-up');
+        console.log($('#icon').data('status'));
+    });
+
+    $('#icon').mouseup(function(){
+        $('#icon').data('status', 'cambió');
+        $('#icon').addClass('fa-volume-up').removeClass('fa-volume-off');
+        console.log($('#icon').data('status'));
+    }); */
+
+    $('#icon').data('atrib', {nombre:'fa-volume-off', color:'green'});
+    var icon = $('#icon').data('atrib');
+    console.log($('#icon').data('atrib'));
+
+    $('#icon').mousedown(function(){
+        $('#icon').addClass(icon.nombre).removeClass('fa-volume-up');
+        $('#icon').css('color', icon.color);    
+    });
+    $('#icon').mouseup(function(){
+        $('#icon').addClass('fa-volume-up').removeClass(icon.nombre);
+        $('#icon').css('color', 'black');
+    });
+ 
+    /* $('#colors li').each(function(index,value){
+        $('#colors').data('nombre',value);
+        console.log($('#colors').data('nombre'));
+    }); */
+
+/****************************************************************************
+MÉTODO ANIMATE  */ 
+
+$('#left').click(function(){
+    $('.cubo').animate({'left':'-=50px'});
+    console.log("left");
+});
+$('#right').click(function(){
+    $('.cubo').animate({'left':'+=50px'});
+    console.log("right");
+});
+$('#up').click(function(){
+    $('.cubo').animate({'top':'-=50px'});
+    console.log("right");
+});
+$('#down').click(function(){
+    $('.cubo').animate({'top':'+=50px'});
+    console.log("right");
 });
     </script>
 </body>

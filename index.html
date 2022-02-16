@@ -10,12 +10,20 @@
             display: none;   
         }
     </style>
+    <img id="coco" src="img/coco.jpg" alt="">
     <h1 class="saludo">CURSO DE JQUERY</h1>
     <p id="parrafo" class="saludo ocultar">Titulo1</p>
     <div>:3 :)</div>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/index.js"></script>
     <script>
+/****************************************************************
+    SELECTORES BÁSICOS: 
+
+    POR ID=> $('#NOMBRE'), 
+    POR CLASE=> $('.NOMBRE'),
+    POR ETIQUETA=> $('NOMBRE').
+
 /*****************************************************************
  * FORMAS DE SABER SI EL DOCUMENTO ESTA CARGANDO BIEN */
       /* $(document).ready(function(){
@@ -64,14 +72,14 @@ METODO WHEN / THEN / CATCH.*/
  SETTERS NOS PERMITE ASIGNARLE UN VALOR A ALGÚN ELEMENTO. 
  METODO attr NOS PERMITE OBTENER Y ASIGNAR UN VALOR*/
 
-/* var a = $('.saludo').html();     //EJEMPLO 1 html
+/* var a = $('.saludo').html();     //EJEMPLO 1 html OBTIENE EL VALOR DE LO QUE TENGA LA CLASE $('.saludo')
 alert(a); */   
 
 /* var a = $('h1').attr('class');     //EJEMPLO 2 método attr . En este ejemplo obtiene la clase.
 alert(a); */
 
-/* var a = $('h1').attr('id','hola');     //EJEMPLO 3. H1 no tenía id. Se modificó con el método attr. Se puede ver por consola.
-alert(a); */
+/* var b = $('h1').attr('id','hola');     //EJEMPLO 3. H1 no tenía id. Se modificó con el método attr. Se puede ver por consola.
+alert(b); */
 
 /********************************************************************
  
@@ -101,7 +109,7 @@ MANEJO DE CLASES css. hasClass, addClass, removeClass.*/
 
 SHOW and HIDE.  SHOW nos permite mostrar un elemento en pantalla. HIDE nos permite ocultalo.*/
 
-$(function(){
+/* $(function(){
     $('#parrafo').css({'background-color':'green','text-align':'center'});
     if($('#parrafo').hasClass('saludo')){
         alert("Si tiene clase saludo");
@@ -120,7 +128,111 @@ $(function(){
         alert("div no tiene la clase saludo");
         $('div').hide(3000);
     }
-});
+}); */
+
+/*******************************************************************************
+
+ITERAR ELEMENTOS POR MEDIO DE EACH, FOR, FOR OF.
+A each se le pasan dos parametros: el nombre del arreglo 
+y una función que va a tener dos parametros: la posición y el valor*/ 
+
+/* $(function(){
+    var numbers = [1,2,4,4,4,6,67,5,4,2];
+    $.each(numbers,function(i,value){
+        console.log(i+":"+value);
+    });
+}); */
+
+/* $(function(){
+    var numbers = [1,2,4,4,4,6,67,5,4,2];
+    console.log("Tamaño del arreglo: "+numbers.length);
+    for(var i = 0; i< numbers.length; i++){
+        console.log(numbers[i]); 
+    }
+}); */
+
+/* $(function(){
+    var numbers = [1,4,6,2];
+    for(let num of numbers){
+        console.log(num);
+    }
+}); */
+
+//For of para obtener un valor del arreglo
+
+/* $(function(){
+    var colors = [{
+        "colors":[{
+            "colorName":"red",
+            "hexValue":"#f00"
+        },
+        {
+            "colorName":"green",
+            "hexValue":"#0f0"
+        },
+        {
+            "colorName":"blue",
+            "hexValue":"#00f"
+        }]
+    }]
+
+    for(let color of colors){                 //Acá se usa el for of para obtener un valor del arreglo
+        console.log(color.colors[2].colorName);
+    }
+}); */
+
+/**************************************************************
+
+MÉTODO attr. y removeAttr  con imágenes  */
+                
+/* $('#coco').click(function(){
+    $('#coco').attr('width',200);    //Acá se cambió el ancho de la imagen.
+}); */
+
+/*  $('#coco').click(function(){
+    $('#coco').attr('src','img/Yamaha.jpg');    //Acá se cambió la fuente.
+}); */
+
+/* $('#coco').click(function(){
+    $('#coco').removeAttr('src');  //Al remover la fuente desaparece la imagen.
+}); */
+
+/* EVENTOS .click(), .dblclick(), 
+.mouseenter(): Cuando el puntero del mouse entra en el elemento, 
+.mouseleave(): Cuando el puntero del mouse sale del elemento, 
+.mousedown(): Cuando se presiona un botón del mouse sobre el objeto, 
+.mouseup(): Cuando se libera un botón del mouse sobre el objeto y
+.hover(): Hace cumplir dos funciones, una cuando el puntero entra al elemento y la otra cuando sale. */
+
+/* $('#coco').dblclick(function(){
+    $('#coco').hide();
+}); */
+
+// EJEMPLO DE HOVER.
+
+/* $('#coco').hover(function(){
+    alert("Estas sobre la imagen");
+},
+function(){
+    alert("saliste de la imagen");
+}); */
+
+/************************************************************* 
+DIMENSIONES*/
+
+//Modificar dimensiones directamente.
+
+/* $('#coco').click(function(){
+    $('#coco').width(200).height(100); 
+}); */
+
+//Obtener dimensiones. En este caso el ancho de nuestra imagen.
+
+/* $('#coco').click(function(){
+    let w = $('#coco').width(); 
+    alert("El ancho de nuestra imagen es "+ w );
+}); */
+
 
     </script>
 </body>

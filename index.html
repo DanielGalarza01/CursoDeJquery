@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Curso de jquery</title>
 </head>
-<body>
+<body style="height: 3000px;">
     <center>
 
     <h1><i class="fa fa-volume-up" id="icon" ></i></h1>
@@ -24,9 +24,10 @@
     
     <ul id="colors" >
         <li>orange</li>
-        <li>purple</li>
+        <li>purple</li> 
         <li>green</li>
     </ul>
+    
     <style>
         .cubo{
             position: absolute;
@@ -41,7 +42,19 @@
     <button id="right" class="fa fa-forward" ></button>
     <button id="up" class="fa fa-caret-up" ></button>
     <button id="down" class="fa fa-caret-down"></button>
-    <div class="cubo"></div>
+    <div class="cubo"></div><br>
+    <button id="exe" style="margin-top: 200px;">Ejecutar</button>
+    <ol id="padre-ol" >
+        <li>Elemento1</li>
+        <li class="hijo" >Elemento2</li>
+        <li>Elemento3</li>
+        <li>Elemento4</li>
+    </ol>
+    
+  
+    <button id="final" style="margin-top: 2000px;" >Hacia arriba</button>
+    
+    
     </center>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="https://use.fontawesome.com/e622d3b53e.js"></script>
@@ -285,9 +298,11 @@ EFECTOS. .show  .hide
 $(function(){
     $('#btn1').click(function(){
         $('#coco').fadeIn(3000);
+        console.log("Mostrando");
     });
     $('#btn2').click(function(){
         $('#coco').fadeOut(3000);   //Se  puede agregar un tiempo de ejecución.
+        console.log("Ocultando");
     });
 });
 
@@ -391,11 +406,11 @@ MÉTODO ANIMATE  */
         });
         $('#up').click(function(){
             $('.cubo').animate({'top':'-=50px'}); 
-            console.log("right");
+            console.log("up");
         });
         $('#down').click(function(){
             $('.cubo').animate({'top':'+=50px'});
-            console.log("right");
+            console.log("down");
         });
 
         $('body').keyup(function(event){
@@ -431,8 +446,83 @@ MÉTODO ANIMATE  */
         });
       
 /**************************************************************
-*/
+EVENTOS DEL SCROLL    */     
+   // NO FUNCIONA!!!!!!!!!!!!!!!!!!!!!!!!!
+   
+$(function(){
+    $('#final').click(function(){
+        $('body').animate({ scrollTop : 0 },'700');
+    });
 
+});
+    
+    /* $(window).scroll(function(){
+        if($(this).scrollTop() > 100){
+            console.log("hola scroll");
+        }else{
+            console.log("no scroll");
+        }
+    }); */
+
+/****************************************************************
+CREAR, COPIAR, MOVER Y REMOVER ELEMENTOS*/ 
+
+// EL METODO .append() AGREGA UN ELEMENTO AL FINAL DE LA LISTA.
+/* $(function(){
+    $('#exe').click(function(){
+        $('#padre-ol').append('<li>NuevoElemento</li>');
+    })
+}); */
+
+// EL MÉTODO .prepend() AGREGA UN ELEMENTO AL COMIENZO DE LA LISTA.
+/* $(function(){
+    $('#exe').click(function(){
+        $('#padre-ol').prepend('<li>Nuevo elemento</li>');
+    })
+}); */
+
+// AGREGAR AL FINAL NUESTRO PRIMER ELEMENTO.
+/* $(function(){
+    $('#exe').click(function(){
+        $('#padre-ol').append($('ol li:first'));
+    })
+}); */
+
+// AGREGAR AL PRINCIPIO NUESTRO ÚLTIMO ELEMENTO.
+$(function(){
+    $('#exe').click(function(){
+        $('#padre-ol').prepend($('ol li:last'));
+    })
+});
+
+// COPIAR EN OTRO LUGAR CON APPEND Y PREPEND.
+/* $(function(){
+    $('#exe').click(function(){
+        var clon = $('ol li:last').text();
+        console.log(clon);
+        $('.saludo').append(clon);
+        $('#padre-ol').prepend($('ol li:last'));
+    }); 
+}); */
+
+// REMOVER LOS ELEMENTOS DE NUESTRA LISTA:
+/* $(function(){
+    $('#exe').click(function(){
+        $('ol li:last').remove();
+    }); 
+}); */
+
+/******************************************************************
+PADRES, HIJOS Y HERMANOS    */ 
+
+$(function(){
+    var hijos = $('#padre-ol').children().text();
+    var padre = $('.hijo').parent();
+    var hermanos = $('.hijo').siblings().text();
+    console.log(hijos);
+    console.log(padre);
+    console.log(hermanos);
+});
     </script>
 </body>
 </html>

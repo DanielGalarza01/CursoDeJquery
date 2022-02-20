@@ -9,6 +9,7 @@
 
     <h1><i class="fa fa-volume-up" id="icon" ></i></h1>
     <h1 class="saludo">CURSO DE JQUERY</h1>
+    <h3 id="resultado" ></h3>
     <div>primera página</div><br><br>
     <button id="btn1" >mostrar</button>
     <button id="btn2" >ocultar</button><br><br>
@@ -489,11 +490,11 @@ CREAR, COPIAR, MOVER Y REMOVER ELEMENTOS*/
 }); */
 
 // AGREGAR AL PRINCIPIO NUESTRO ÚLTIMO ELEMENTO.
-$(function(){
+/* $(function(){
     $('#exe').click(function(){
         $('#padre-ol').prepend($('ol li:last'));
     })
-});
+}); */
 
 // COPIAR EN OTRO LUGAR CON APPEND Y PREPEND.
 /* $(function(){
@@ -515,14 +516,69 @@ $(function(){
 /******************************************************************
 PADRES, HIJOS Y HERMANOS    */ 
 
-$(function(){
+/* $(function(){
     var hijos = $('#padre-ol').children().text();
     var padre = $('.hijo').parent();
     var hermanos = $('.hijo').siblings().text();
     console.log(hijos);
     console.log(padre);
     console.log(hermanos);
+}); */
+
+/******************************************************************** 
+CREAR ELEMENTOS VIRTUALES.   */
+
+/* $('#exe').click(function(){
+    var li = $('<li>');
+    $('#padre-ol').append(li);
+}); */     
+
+// Se puede agregar texto.
+$('#exe').click(function(){
+    var li = $('<li>',{text: 'Virtual Element'});
+    $(li).addClass('vElem');
+    $('#padre-ol').append(li);
+    $('.vElem').click(function(){
+        alert('Este es un elemento virtual');
+    });
 });
+
+/********************************************************************** 
+JSON.parse   */ 
+
+/* $(function(){
+    var obj = JSON.parse('{"name":"Daniel", "lastname":"Galarza"}');
+    console.log(obj.name);
+    console.log(obj.lastname);  
+}); */
+
+$(function(){
+    var cad = '{"name":"Daniel", "lastname":"Galarza", "edad": 47}';
+    var obj = JSON.parse(cad);
+    console.log(obj.name+" "+obj.lastname);
+    console.log(obj.edad);  
+//  NO ENTIENDO BIEN LA UTILIDAD DE JSON.parse 
+//  SE PUEDE DECLARAR DIRECTAMENTE UN OBJETO JSON ASÍ:
+    var persona = {name:"Cintia",lastname:"Balbi",edad: 38};
+    console.log(persona.name+" tiene "+persona.edad+" años");
+});
+
+/********************************************************************** 
+MÉTODO GET EN AJAX  
+Nos permite obtener valores o informacíon e algún archivo       */
+
+$(function(){
+    $.get('ejemplo.html',function(data){
+        //console.log(data);
+        $('#resultado').text(data);
+    });
+});
+
+//Pasar o convinar información de nuestro archivo.
+
+//Estoy en el video 27
+
+
     </script>
 </body>
 </html>
